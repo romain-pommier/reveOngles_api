@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Service;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -48,7 +49,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
     }
 
     /**
@@ -59,6 +60,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+
+        $services = Service::where('category_id',$category['id']);
+        $services->delete();
+        $category->delete();
     }
 }

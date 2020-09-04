@@ -15,7 +15,8 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            $table->foreignId('category_id')->constrained('category');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->float('amount');
             $table->string('name', 255);
             $table->timestamps();

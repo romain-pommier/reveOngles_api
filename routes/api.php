@@ -14,12 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::middleware('auth:api')->group(function (){
+//    Route::middleware('auth:api')->get('/user', function (Request $request) {
+//        return $request->user();
+//    });
+
+    Route::apiResources([
+        'categories' => 'CategoryController',
+        'services' => 'ServiceController',
+        'carousels' => 'CarouselController'
+    ]);
+
+});
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
 });
 
-Route::apiResources([
-    'categories' => 'CategoryController',
-    'services' => 'ServiceController',
-    'carousels' => 'CarouselController'
-]);
