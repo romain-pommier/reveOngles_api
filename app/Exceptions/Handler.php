@@ -50,6 +50,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // exception for TokenBlacklistedException
+     if ($exception instanceof TokenBlacklistedException) {
+        return response()->json([
+            "error" => "token blacklisted"
+        ], 401);
+    }
         return parent::render($request, $exception);
     }
+     
 }
