@@ -21,8 +21,11 @@ Route::middleware('api')->prefix('auth')->group(function() {
     Route::post('me', 'AuthController@me');
     Route::post('register', 'AuthController@register');
 });
-Route::apiResources([
-    'categories' => 'CategoryController',
-    'services' => 'ServiceController',
-    'carousels' => 'CarouselController'
-]);
+Route::middleware('auth:api')->group(function(){
+    Route::apiResources([
+        'categories' => 'CategoryController',
+        'services' => 'ServiceController',
+        'carousels' => 'CarouselController'
+    ]);
+});
+
