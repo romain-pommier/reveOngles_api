@@ -84,7 +84,8 @@
             Welcom to Rêve d'ongles API
         </div>
         <div>
-            Error Application header format
+            Error Application header format<br>
+            Authentification error
         </div>
 
         {{--                <div class="links">--}}
