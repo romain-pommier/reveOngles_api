@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('login', function(){
     return view('errorHeader');
 })->name('login');
+
+Route::get('/test', function () {
+    dd('Welcome to admin user routes.');
+});

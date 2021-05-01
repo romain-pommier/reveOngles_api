@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Service;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -14,7 +15,16 @@ class ServiceController extends Controller
      */
     public function index()
     {
+        // $category = new Category;
+        // var_dump($category);
+        // return $category->show(1);
+        // return Category::all();
+        
+        // -----------------------------------------------------------------------------------
+        // ---------------------management complet schema services here-----------------------
+        // -----------------------------------------------------------------------------------
         return Service::all();
+        
     }
 
     /**

@@ -23,9 +23,11 @@ Route::middleware('api')->prefix('auth')->group(function() {
 });
 Route::middleware('auth:api')->group(function(){
     Route::apiResources([
+        'sub_category' => 'SubCategoryServiceController',
         'categories' => 'CategoryController',
         'services' => 'ServiceController',
         'carousels' => 'CarouselController'
     ]);
+   
 });
 
