@@ -28,6 +28,7 @@ class ServiceController extends Controller
         $category = Category::all();
         $service = Service::all();
         $subCategoryService = SubCategoryService::all();
+        
         $test = [
             'services'=> $service,
             'categorys' => $category,
