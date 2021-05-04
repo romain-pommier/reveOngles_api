@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use App\Category;
+use App\SubCategoryService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -23,7 +24,31 @@ class ServiceController extends Controller
         // -----------------------------------------------------------------------------------
         // ---------------------management complet schema services here-----------------------
         // -----------------------------------------------------------------------------------
-        return Service::all();
+
+        $category = Category::all();
+        $service = Service::all();
+        $subCategoryService = SubCategoryService::all();
+        $test = [
+            'services'=> $service,
+            'categorys' => $category,
+            'subCategorys'=> $subCategoryService,
+        ];
+            
+        $test = json_encode($test);
+        $newSchemaService = [];
+        foreach($category as $item_category){
+            foreach($subCategoryService as $item_subCategoryService){
+                foreach($service as $item_service){
+                    if($item_service->sub_category_services_id == $item_subCategoryService->id){
+                        var_dump('ajout du service a la sub category');
+                    }
+                }
+            }
+            
+        };
+        
+        var_dump($category[8]->id, 'sdfghjkl');
+        return $test;
         
     }
 
