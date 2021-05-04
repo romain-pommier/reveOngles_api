@@ -35,20 +35,25 @@ class ServiceController extends Controller
         ];
             
         $test = json_encode($test);
-        $newSchemaService = [];
+        $newSchemaService = $category;
         foreach($category as $item_category){
             foreach($subCategoryService as $item_subCategoryService){
+                if($item_subCategoryService->category_id == $item_category->id){ 
+                    
+                    $newSchemaService->subCategory = $item_subCategoryService;
+                }
+               
                 foreach($service as $item_service){
                     if($item_service->sub_category_services_id == $item_subCategoryService->id){
-                        var_dump('ajout du service a la sub category');
+                        $newSchemaService->subCategory->service = $item_service;
                     }
                 }
             }
             
         };
         
-        var_dump($category[8]->id, 'sdfghjkl');
-        return $test;
+        // var_dump($category[8]->id, 'sdfghjkl');
+        return $category;
         
     }
 
