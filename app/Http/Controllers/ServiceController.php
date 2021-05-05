@@ -16,20 +16,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        // $category = new Category;
-        // var_dump($category);
-        // return $category->show(1);
-        // return Category::all();
-        
-        // -----------------------------------------------------------------------------------
-        // ---------------------management complet schema services here-----------------------
-        // -----------------------------------------------------------------------------------
-
         $category = Category::all();
         $service = Service::all();
         $subCategory = SubCategoryService::all();
         
-       
         $newSchemaService = [];
         foreach($category as $item_category){
             $newItem_category = $item_category;
@@ -48,10 +38,8 @@ class ServiceController extends Controller
             }
             $item_category->subCategory = $newSubCategory;
             array_push($newSchemaService, $item_category);
-
         };
         return $newSchemaService;
-        
     }
 
     /**
