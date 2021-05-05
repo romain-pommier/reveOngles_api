@@ -25,15 +25,15 @@ class ServiceController extends Controller
             $newItem_category = $item_category;
             $newSubCategory = [];
             foreach($subCategory as $item_subCategory){
-                if($item_subCategory->category_id == $item_category->id ){
-                    $newServices= [];
+                if($item_subCategory->category_id == $item_category->id){
+                    $newServices = [];
                     foreach($service as $item_service){
                         if($item_service->sub_category_services_id == $item_subCategory->id){
                             array_push($newServices, $item_service);
                         }
                     }
                     $item_subCategory->services = $newServices;
-                    array_push($newSubCategory,  $item_subCategory);
+                    array_push($newSubCategory, $item_subCategory);
                 }
             }
             $item_category->subCategory = $newSubCategory;
