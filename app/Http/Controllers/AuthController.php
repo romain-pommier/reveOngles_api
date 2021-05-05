@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+
+
+
+
+
 class AuthController extends Controller
 {
     /**
@@ -17,6 +22,13 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
+        // **********************************************************************************************************************
+        // **********************************************************************************************************************
+        // for register manual user:
+        // php artisan tinker
+        // DB::table('users')->insert(['name'=>'toto','email'=>'toto@hotmail.com','password'=>Hash::make('123456')])
+        // **********************************************************************************************************************
+        // **********************************************************************************************************************
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
