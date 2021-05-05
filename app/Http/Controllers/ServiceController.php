@@ -27,34 +27,30 @@ class ServiceController extends Controller
 
         $category = Category::all();
         $service = Service::all();
-        $subCategoryService = SubCategoryService::all();
+        $subCategory = SubCategoryService::all();
         
-        $test = [
-            'services'=> $service,
-            'categorys' => $category,
-            'subCategorys'=> $subCategoryService,
-        ];
-            
-        $test = json_encode($test);
-        $newSchemaService = $category;
+       
+        $newSchemaService = [];
         foreach($category as $item_category){
-            foreach($subCategoryService as $item_subCategoryService){
-                if($item_subCategoryService->category_id == $item_category->id){ 
-                    
-                    $newSchemaService->subCategory = $item_subCategoryService;
-                }
-               
-                foreach($service as $item_service){
-                    if($item_service->sub_category_services_id == $item_subCategoryService->id){
-                        $newSchemaService->subCategory->service = $item_service;
+            $newItem_category = $item_category;
+            $newSubCategory = [];
+            foreach($subCategory as $item_subCategory){
+                if($item_subCategory->category_id == $item_category->id ){
+                    $newServices= [];
+                    foreach($service as $item_service){
+                        if($item_service->sub_category_services_id == $item_subCategory->id){
+                            array_push($newServices, $item_service);
+                        }
                     }
+                    $item_subCategory->services = $newServices;
+                    array_push($newSubCategory,  $item_subCategory);
                 }
             }
-            
+            $item_category->subCategory = $newSubCategory;
+            array_push($newSchemaService, $item_category);
+
         };
-        
-        // var_dump($category[8]->id, 'sdfghjkl');
-        return $category;
+        return $newSchemaService;
         
     }
 
