@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class SubCategory extends Migration
+class CreateSubCategory extends Migration
 {
     /**
      * Run the migrations.
@@ -31,6 +31,6 @@ class SubCategory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('sub_category');
     }
 }
