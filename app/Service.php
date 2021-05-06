@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     protected $fillable = [
-        'category_id',
+        'sub_category_services_id',
         'amount',
         'name'
     ];

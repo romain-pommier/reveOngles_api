@@ -26,7 +26,7 @@ class AuthController extends Controller
         // **********************************************************************************************************************
         // for register manual user:
         // php artisan tinker
-        // DB::table('users')->insert(['name'=>'toto','email'=>'toto@hotmail.com','password'=>Hash::make('123456')])
+        // DB::table('users')->insert(['name'=>'toto','email'=>'toto@hotmail.fr','password'=>Hash::make('123456')])
         // **********************************************************************************************************************
         // **********************************************************************************************************************
         $user = User::create([
